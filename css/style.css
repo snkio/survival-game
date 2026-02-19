@@ -1,0 +1,46 @@
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+.container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+}
+
+button {
+	min-width: 200px;
+	min-height: 50px;
+	margin: 50px auto;
+	border: none;
+	border-radius: 5px;
+	background-color: rgb(237, 237, 153);
+}
+
+.wrapper {
+	background-color: gray;
+	min-width: 600px;
+	min-height: 300px;
+	text-align: center;
+	padding: 10px 20px;
+	border-radius: 20px;
+}
+
+.h1__text {
+	font-size: 40px;
+	display: none;
+}
+
+#score,
+#status,
+#scorel,
+#restartGame {
+	display: none;
+}
+
+.main__text {
+	font-size: 20px;
+}
