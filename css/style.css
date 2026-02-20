@@ -11,6 +11,10 @@
 	min-height: 100vh;
 }
 
+.flex {
+	display: flex;
+}
+
 button {
 	min-width: 200px;
 	min-height: 50px;
@@ -35,25 +39,27 @@ button {
 	display: none;
 }
 
-.play {
+.btns {
 	opacity: 1;
 	transition: all 0.3s ease;
 	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
-.play:hover {
+.btns:hover {
 	transform: scale(1.05);
 	cursor: pointer;
 	opacity: 0.8;
 }
 
-.play:active {
+.btns:active {
 	transform: scale(0.97);
 }
 
 #score,
 #status,
 #scorel,
+#potions,
+#potionsMount,
 #restartGame {
 	display: none;
 }
