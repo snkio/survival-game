@@ -1,31 +1,32 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Survival Game</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
 
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Survival Game</title>
-	<link rel="stylesheet" href="./css/style.css">
-</head>
+  <body>
+    <div class="container">
+      <div class="wrapper">
+        <h1 class="h1__text">Survival Game</h1>
+        <p class="hp__text">HP: <span id="hp-status">100</span></p>
+        <p class="main__text" id="score"></p>
+        <p class="main__text" id="status">Ждем действий..</p>
+        <p class="heal" id="potionsMount">Зелий здоровья: 5</p>
+        <p class="main__text" id="end"></p>
+        <div class="flex">
+          <button class="btns" id="playGame">Начать игру</button>
+          <button class="btns" id="potions">Восстановить здоровье</button>
+        </div>
+        <button class="btns" id="restartGame">Рестарт</button>
+        <button class="btns" id="github">
+          <a href="https://github.com/snkio" target="_blank">Github</a>
+        </button>
+      </div>
+    </div>
 
-<body>
-	<div class="container">
-		<div class="wrapper">
-			<h1 class="h1__text">HP: <span id="hp-status">100</span></h1>
-			<div class="main__text" id="score"></div>
-			<div class="main__text" id="status">Ждем действий..</div>
-			<div class="heal" id="potionsMount">Зелий здоровья: 5</div>
-			<div class="main__text" id="end"></div>
-			<div class="flex">
-				<button class="btns" id="playGame">Начать игру</button>
-				<button class="btns" id="potions">Восстановить здоровье</button>
-			</div>
-
-			<button class="btns" id="restartGame">Рестарт</button>
-		</div>
-	</div>
-
-	<script src="./js/index.js"></script>
-</body>
-
+    <script src="./js/index.js"></script>
+  </body>
 </html>
