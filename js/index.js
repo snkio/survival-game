@@ -1,7 +1,9 @@
 const gameName = document.querySelector(".h1__text");
 const gitHub = document.querySelector("#github");
-const hpText = document.querySelector(".hp__text");
+const hpText = document.querySelector(".hp__sec");
 const hpStatus = document.querySelector("#hp-status");
+const hpLine = document.querySelector("#hpline");
+const hpStyle = document.querySelector(".hp__line");
 const hpPotions = document.querySelector("#potions");
 const potionsMount = document.querySelector("#potionsMount");
 const gameStatus = document.querySelector("#status");
@@ -44,6 +46,7 @@ hpPotions.addEventListener("click", () => {
   gameStatus.textContent = `Вы выпили зелье! Осталось еще: ${PLAYER.hppotions}`;
 
   hpStatus.textContent = PLAYER.hp;
+  hpLine.style.width = PLAYER.hp + "%";
   potionsMount.textContent = `Зелий здоровья: ${PLAYER.hppotions}`;
   console.log(`HP = ${PLAYER.hp}`);
 });
@@ -56,7 +59,7 @@ playBtn.addEventListener("click", () => {
 
   console.log("Clicked!");
 
-  hpText.style.display = "block";
+  hpText.style.display = "flex";
   gameScore.style.display = "block";
   gameStatus.style.display = "block";
   hpPotions.style.display = "block";
@@ -77,8 +80,13 @@ playBtn.addEventListener("click", () => {
     PLAYER.score += 15;
   }
 
+  if (PLAYER.hp <= 30) {
+    hpLine.style.background = "orange";
+  }
+
   gameScore.textContent = `Ваш счёт: ${PLAYER.score}`;
   hpStatus.textContent = PLAYER.hp;
+  hpLine.style.width = PLAYER.hp + "%";
 
   if (PLAYER.score >= PLAYER.nextReward) {
     PLAYER.hppotions++;
