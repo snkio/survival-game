@@ -55,7 +55,7 @@ a {
 .hp__line {
   width: 100%;
   height: 100%;
-  background: red;
+  background-color: rgb(7, 169, 7);
 }
 
 .btns {

@@ -19,6 +19,22 @@ const PLAYER = {
   nextReward: 500,
 };
 
+const refreshUI = () => {
+  if (PLAYER.hp <= 30) {
+    hpLine.style.backgroundColor = "red";
+  } else if (PLAYER.hp <= 50) {
+    hpLine.style.backgroundColor = "orange";
+  } else {
+    hpLine.style.backgroundColor = "green";
+  }
+
+  hpStatus.textContent = PLAYER.hp;
+  hpLine.style.width = PLAYER.hp + "%";
+  potionsMount.textContent = `Зелий здоровья: ${PLAYER.hppotions}`;
+
+  gameScore.textContent = `Ваш счёт: ${PLAYER.score}`;
+};
+
 gameRestart.addEventListener("click", () => {
   location.reload();
   console.log("Restart Page");
@@ -45,9 +61,8 @@ hpPotions.addEventListener("click", () => {
 
   gameStatus.textContent = `Вы выпили зелье! Осталось еще: ${PLAYER.hppotions}`;
 
-  hpStatus.textContent = PLAYER.hp;
-  hpLine.style.width = PLAYER.hp + "%";
-  potionsMount.textContent = `Зелий здоровья: ${PLAYER.hppotions}`;
+  refreshUI();
+
   console.log(`HP = ${PLAYER.hp}`);
 });
 
@@ -80,14 +95,6 @@ playBtn.addEventListener("click", () => {
     PLAYER.score += 15;
   }
 
-  if (PLAYER.hp <= 30) {
-    hpLine.style.background = "orange";
-  }
-
-  gameScore.textContent = `Ваш счёт: ${PLAYER.score}`;
-  hpStatus.textContent = PLAYER.hp;
-  hpLine.style.width = PLAYER.hp + "%";
-
   if (PLAYER.score >= PLAYER.nextReward) {
     PLAYER.hppotions++;
     PLAYER.nextReward += 500;
@@ -95,6 +102,8 @@ playBtn.addEventListener("click", () => {
   }
 
   potionsMount.textContent = `Зелий здоровья: ${PLAYER.hppotions}`;
+
+  refreshUI();
 
   if (PLAYER.hp <= 15) {
     gameStatus.textContent =
@@ -109,6 +118,7 @@ playBtn.addEventListener("click", () => {
     gameRestart.style.display = "block";
     gameEnd.textContent = `Игра закончена ваш итоговый счёт: ${PLAYER.score}`;
     console.log("LOSE!!!");
+
     return;
   }
 });
