@@ -11,13 +11,21 @@ const gameScore = document.querySelector("#score");
 const gameEnd = document.querySelector("#end");
 const gameRestart = document.querySelector("#restartGame");
 const playBtn = document.querySelector("#playGame");
+const score = document.querySelector("#max-score");
 
 const PLAYER = {
   hp: 100,
   score: 0,
+  maxScore: 0,
   hppotions: 5,
   nextReward: 500,
 };
+
+const savedScore = localStorage.getItem("maxScore");
+
+PLAYER.maxScore = savedScore ? JSON.parse(savedScore) : 0;
+
+console.log(PLAYER.maxScore);
 
 const refreshUI = () => {
   if (PLAYER.hp <= 30) {
@@ -33,7 +41,10 @@ const refreshUI = () => {
   potionsMount.textContent = `Зелий здоровья: ${PLAYER.hppotions}`;
 
   gameScore.textContent = `Ваш счёт: ${PLAYER.score}`;
+  score.textContent = `Максимальный счет: ${PLAYER.maxScore}`;
 };
+
+refreshUI();
 
 gameRestart.addEventListener("click", () => {
   location.reload();
@@ -81,6 +92,7 @@ playBtn.addEventListener("click", () => {
   potionsMount.style.display = "block";
   gameName.style.display = "none";
   gitHub.style.display = "none";
+  score.style.display = "none";
 
   if (CHANCE < 0.1) {
     gameStatus.textContent = "Вы смогли отбиться от противника, идем дальше!";
@@ -106,6 +118,10 @@ playBtn.addEventListener("click", () => {
   refreshUI();
 
   if (PLAYER.hp <= 15) {
+    if (PLAYER.score > PLAYER.maxScore) {
+      PLAYER.maxScore = PLAYER.score;
+    }
+
     gameStatus.textContent =
       "Генерал решил вас перевести в госпиталь вы были слишком ранены";
     hpText.style.display = "none";
@@ -116,9 +132,11 @@ playBtn.addEventListener("click", () => {
     gameName.style.display = "block";
     gitHub.style.display = "block";
     gameRestart.style.display = "block";
+    score.style.display = "block";
     gameEnd.textContent = `Игра закончена ваш итоговый счёт: ${PLAYER.score}`;
     console.log("LOSE!!!");
 
+    localStorage.setItem("maxScore", JSON.stringify(PLAYER.maxScore));
     return;
   }
 });
